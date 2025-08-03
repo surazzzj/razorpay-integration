@@ -14,7 +14,7 @@ const RazorpayButton = () => {
       }
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Make sure this env variable is set in Vite
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID, 
         amount: data.order.amount,
         currency: "INR",
         name: "My App",
@@ -26,7 +26,7 @@ const RazorpayButton = () => {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
-            amount: data.order.amount / 100  // convert back to ₹
+            amount: data.order.amount / 100  
           });
 
           alert(verifyRes.data.message);

@@ -1,11 +1,8 @@
 import paymentModel from "../models/paymentModel.js";
 import Razorpay from "razorpay";
-import crypto from "crypto"; // ✅ Needed for signature verification
+import crypto from "crypto"; // Needed for signature verification
 import dotenv from "dotenv";
 dotenv.config();
-
-console.log("KEY_ID:", process.env.RAZORPAY_KEY_ID);
-console.log("KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
 
 // Razorpay Instance
 const razorpayInstance = new Razorpay({
@@ -16,7 +13,7 @@ const razorpayInstance = new Razorpay({
 // Create Order API
 const createOrder = async (req, res) => {
   try {
-    const { amount } = req.body; // ✅ Fix: destructure amount properly
+    const { amount } = req.body; 
 
     if (!amount) {
       return res.status(400).json({ success: false, message: "Amount is required" });
@@ -32,8 +29,8 @@ const createOrder = async (req, res) => {
 
     res.json({ success: true, order });
   } catch (error) {
-   console.error("Order creation failed:", error); // ✅ FULL error object
-    res.status(500).json({ success: false, message: error.message });
+    console.error("Order creation failed:", error);
+    res.json({ success: false, message: error.message });
   }
 };
 
